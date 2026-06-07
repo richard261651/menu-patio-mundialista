@@ -1,0 +1,687 @@
+/* ==========================================
+   PATIO MUNDIALISTA - PREMIUM STYLING
+   ========================================== */
+
+:root {
+  --amarillo: #FFCD00;
+  --azul: #003087;
+  --rojo: #C8102E;
+  --negro: #080808;
+  --crema: #FFF8E7;
+  --card-bg: rgba(18, 18, 18, 0.75);
+  --glass-bg: rgba(15, 15, 15, 0.9);
+  --glass-border: rgba(255, 205, 0, 0.2);
+  --neon-glow: 0 0 15px rgba(255, 205, 0, 0.3);
+  --shadow-main: 0 8px 32px 0 rgba(0, 0, 0, 0.6);
+  --transition-fast: 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+  --transition-slow: 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Base resets and defaults */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  -webkit-tap-highlight-color: transparent;
+  outline: none;
+}
+
+html, body {
+  height: 100%;
+  width: 100%;
+  overflow-x: hidden;
+  background-color: var(--negro);
+  font-family: 'Archivo', sans-serif;
+  color: var(--crema);
+  scroll-behavior: smooth;
+}
+
+body {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+/* ===================== INTRO / CLOUDINARY VIDEO INTRO ===================== */
+#intro {
+  position: fixed;
+  inset: 0;
+  z-index: 1000;
+  background: #000;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: opacity 0.8s cubic-bezier(0.7, 0, 0.3, 1), visibility 0.8s cubic-bezier(0.7, 0, 0.3, 1);
+}
+
+#intro.hide {
+  opacity: 0;
+  visibility: hidden;
+}
+
+#introVideo {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: 1;
+}
+
+.skip {
+  position: fixed;
+  bottom: 30px;
+  right: 25px;
+  z-index: 10;
+  background: rgba(0, 0, 0, 0.5);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  color: #fff;
+  font-family: 'Bebas Neue', sans-serif;
+  letter-spacing: 2.5px;
+  font-size: 0.95rem;
+  padding: 0.6rem 1.2rem;
+  border-radius: 30px;
+  backdrop-filter: blur(8px);
+  cursor: pointer;
+  transition: background var(--transition-fast), transform var(--transition-fast);
+}
+
+.skip:hover {
+  background: rgba(255, 205, 0, 0.3);
+  transform: scale(1.05);
+}
+
+#intro.hide .skip {
+  display: none;
+}
+
+/* ===================== APP LAYOUT ===================== */
+#app {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background:
+    radial-gradient(circle at 10% 0%, rgba(255,205,0,0.1), transparent 45%),
+    radial-gradient(circle at 90% 100%, rgba(0,48,135,0.18), transparent 50%),
+    radial-gradient(circle at 50% 50%, rgba(200,16,46,0.06), transparent 60%),
+    var(--negro);
+  color: var(--crema);
+  padding-bottom: 3rem;
+  opacity: 0;
+  position: relative;
+  z-index: 1;
+}
+
+#app.show {
+  animation: fadeApp 0.8s ease forwards;
+}
+
+@keyframes fadeApp {
+  to { opacity: 1; }
+}
+
+#app::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  opacity: 0.02;
+  background-image: radial-gradient(circle, #fff 1.5px, transparent 1.5px);
+  background-size: 28px 28px;
+}
+
+/* Waving stadium light effect */
+.stadium-light {
+  position: fixed;
+  top: -150px;
+  left: 50%;
+  width: 300px;
+  height: 600px;
+  background: radial-gradient(ellipse at top, rgba(255, 255, 255, 0.08), transparent 70%);
+  transform-origin: top center;
+  transform: translateX(-50%) rotate(-15deg);
+  pointer-events: none;
+  z-index: 0;
+  animation: searchlight 8s ease-in-out infinite alternate;
+}
+
+@keyframes searchlight {
+  0% { transform: translateX(-50%) rotate(-20deg); }
+  100% { transform: translateX(-50%) rotate(20deg); }
+}
+
+/* Header */
+header {
+  position: relative;
+  z-index: 2;
+  text-align: center;
+  padding: 2.2rem 1rem 1.6rem;
+  border-bottom: 3px solid var(--amarillo);
+  background: linear-gradient(180deg, rgba(0,48,135,0.2), transparent);
+  box-shadow: 0 4px 20px rgba(0,0,0,0.4);
+}
+
+.tira {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 6px;
+  width: 100%;
+  display: flex;
+}
+.tira div { flex: 1; }
+.tira .a { background: var(--amarillo); }
+.tira .b { background: var(--azul); }
+.tira .r { background: var(--rojo); }
+
+.header-balon {
+  font-size: 2.2rem;
+  animation: girar 5s linear infinite;
+  display: inline-block;
+  margin-bottom: 0.3rem;
+  filter: drop-shadow(0 4px 8px rgba(0,0,0,0.5));
+}
+
+h1 {
+  font-family: 'Anton', sans-serif;
+  font-size: 3rem;
+  line-height: 0.95;
+  letter-spacing: 0.5px;
+}
+h1 .c1 { color: var(--amarillo); text-shadow: 0 2px 4px rgba(0,0,0,0.5); }
+h1 .c2 { color: #fff; text-shadow: 0 2px 4px rgba(0,0,0,0.5); }
+
+.tagline {
+  font-family: 'Bebas Neue', sans-serif;
+  letter-spacing: 3px;
+  font-size: 1.15rem;
+  margin-top: 0.5rem;
+  color: #fff;
+  opacity: 0.9;
+}
+
+/* ===================== VIEWS CONTAINER ===================== */
+.main-content {
+  flex: 1;
+  position: relative;
+  z-index: 2;
+  max-width: 580px;
+  width: 100%;
+  margin: 0 auto;
+  padding: 1.5rem 1rem 2rem;
+}
+
+.view-section {
+  display: none;
+  opacity: 0;
+  transform: translateY(15px);
+  transition: opacity 0.4s ease, transform 0.4s ease;
+}
+
+.view-section.active {
+  display: block;
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ===================== VIEW: MENU ===================== */
+.menu-titulo {
+  font-family: 'Anton', sans-serif;
+  font-size: 1.8rem;
+  text-align: center;
+  color: var(--amarillo);
+  letter-spacing: 1.5px;
+  margin-bottom: 0.4rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.6rem;
+}
+.menu-titulo::before, .menu-titulo::after {
+  content: "";
+  height: 2px;
+  width: 36px;
+  background: var(--rojo);
+  box-shadow: 0 0 8px var(--rojo);
+}
+
+.menu-info-text {
+  text-align: center;
+  font-size: 0.9rem;
+  opacity: 0.65;
+  margin-bottom: 2rem;
+  color: #d8d8d8;
+  letter-spacing: 0.5px;
+}
+
+/* Card Design (Side-by-side) */
+.card {
+  background: linear-gradient(135deg, rgba(255,255,255,0.06), rgba(255,255,255,0.01));
+  border: 1px solid var(--glass-border);
+  border-radius: 24px;
+  padding: 1.2rem;
+  margin-bottom: 1.5rem;
+  position: relative;
+  overflow: hidden;
+  box-shadow: var(--shadow-main);
+  transition: transform var(--transition-fast), border-color var(--transition-fast), box-shadow var(--transition-fast);
+  cursor: pointer;
+  display: flex;
+  gap: 1.2rem;
+  align-items: center;
+}
+
+.card:hover {
+  transform: translateY(-5px) scale(1.01);
+  border-color: rgba(255, 205, 0, 0.4);
+  box-shadow: var(--neon-glow), var(--shadow-main);
+}
+
+/* Colorful marker on the left */
+.card::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 5px;
+  background: var(--accent, var(--amarillo));
+}
+
+/* Floating backgroundless image wrapper on cards */
+.card-image-float-wrapper {
+  width: 80px;
+  height: 140px;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  background: radial-gradient(circle, rgba(255, 255, 255, 0.06) 0%, transparent 70%);
+  border-radius: 50%;
+}
+
+.card-float-img {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+  transition: transform var(--transition-slow), filter var(--transition-slow);
+  filter: drop-shadow(0 4px 10px rgba(0,0,0,0.5));
+  animation: float-beer 4s ease-in-out infinite alternate;
+}
+
+/* Stagger float delay for cards */
+.card:nth-child(even) .card-float-img {
+  animation-delay: -2s;
+}
+
+@keyframes float-beer {
+  0% { transform: translateY(0) rotate(0deg); }
+  100% { transform: translateY(-6px) rotate(3deg); }
+}
+
+@keyframes girar {
+  to { transform: rotate(360deg); }
+}
+
+.card:hover .card-float-img {
+  transform: scale(1.15) rotate(6deg) translateY(-8px);
+  filter: drop-shadow(0 12px 18px rgba(0,0,0,0.7));
+}
+
+.card-content-side {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+}
+
+.card-header-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.card .nombre {
+  font-family: 'Anton', sans-serif;
+  font-size: 1.5rem;
+  letter-spacing: 0.5px;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.card .emoji {
+  font-size: 1.3rem;
+}
+
+.info-tag {
+  background: rgba(255, 255, 255, 0.07);
+  padding: 0.2rem 0.5rem;
+  border-radius: 12px;
+  font-size: 0.72rem;
+  font-weight: 600;
+  color: rgba(255, 255, 255, 0.7);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  white-space: nowrap;
+}
+
+.card-description {
+  font-size: 0.82rem;
+  opacity: 0.7;
+  line-height: 1.4;
+  color: #d4d4d4;
+  margin: 0.2rem 0 0.4rem;
+}
+
+.precios {
+  display: flex;
+  gap: 0.6rem;
+  margin-top: 0.2rem;
+}
+
+.precio-box {
+  flex: 1;
+  background: rgba(0, 0, 0, 0.4);
+  border-radius: 12px;
+  padding: 0.5rem 0.4rem;
+  text-align: center;
+  border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.precio-box .label {
+  font-family: 'Bebas Neue', sans-serif;
+  letter-spacing: 1.5px;
+  font-size: 0.75rem;
+  opacity: 0.55;
+  display: block;
+}
+
+.precio-box .valor {
+  font-family: 'Archivo', sans-serif;
+  font-weight: 800;
+  font-size: 1.25rem;
+  color: var(--amarillo);
+  display: block;
+  margin-top: 0.05rem;
+}
+
+.precio-box.cube .valor {
+  color: #fff;
+}
+
+.precio-box .mini {
+  font-size: 0.62rem;
+  opacity: 0.5;
+  display: block;
+  letter-spacing: 0.5px;
+}
+
+/* Responsive adjustment for small devices */
+@media (max-width: 480px) {
+  .card {
+    flex-direction: column;
+    text-align: center;
+    gap: 0.8rem;
+    padding: 1.4rem;
+  }
+  .card-image-float-wrapper {
+    height: 120px;
+    width: 100px;
+  }
+  .card-header-row {
+    flex-direction: column;
+    gap: 0.4rem;
+  }
+  .card-float-img {
+    animation: float-beer-mobile 4s ease-in-out infinite alternate;
+  }
+  @keyframes float-beer-mobile {
+    0% { transform: translateY(0); }
+    100% { transform: translateY(-8px); }
+  }
+  .card:hover .card-float-img {
+    transform: scale(1.1) translateY(-6px);
+  }
+}
+
+/* ===================== BEER DETAILS MODAL ===================== */
+.modal-backdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.85);
+  backdrop-filter: blur(15px);
+  z-index: 2000;
+  display: flex;
+  align-items: flex-end; /* Slides up from bottom on mobile */
+  justify-content: center;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity var(--transition-slow), visibility var(--transition-slow);
+}
+
+.modal-backdrop.active {
+  opacity: 1;
+  visibility: visible;
+}
+
+.modal-content {
+  background: var(--glass-bg);
+  border: 2px solid var(--glass-border);
+  border-bottom: none;
+  width: 100%;
+  max-width: 480px;
+  border-radius: 30px 30px 0 0;
+  padding: 1.8rem 1.4rem 2.5rem;
+  box-shadow: 0 -10px 40px rgba(0, 0, 0, 0.8);
+  transform: translateY(100%);
+  transition: transform var(--transition-slow);
+  position: relative;
+  max-height: 90vh;
+  overflow-y: auto;
+}
+
+.modal-backdrop.active .modal-content {
+  transform: translateY(0);
+}
+
+/* Custom scrollbar for modal on small screens */
+.modal-content::-webkit-scrollbar {
+  width: 4px;
+}
+.modal-content::-webkit-scrollbar-thumb {
+  background: rgba(255, 205, 0, 0.3);
+  border-radius: 10px;
+}
+
+.modal-close {
+  position: absolute;
+  top: 18px;
+  right: 18px;
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  color: #fff;
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.1rem;
+  cursor: pointer;
+  transition: all var(--transition-fast);
+  z-index: 10;
+}
+
+.modal-close:hover {
+  background: rgba(255, 255, 255, 0.15);
+  transform: rotate(90deg);
+}
+
+/* Centered content for desktop style modal */
+@media (min-width: 480px) {
+  .modal-backdrop {
+    align-items: center;
+  }
+  .modal-content {
+    border-radius: 30px;
+    border-bottom: 2px solid var(--glass-border);
+    max-height: 85vh;
+  }
+}
+
+/* Beer Image display in modal */
+.modal-beer-img-wrapper {
+  width: 100%;
+  height: 180px;
+  border-radius: 20px;
+  margin-bottom: 1.2rem;
+  overflow: hidden;
+  position: relative;
+  background: radial-gradient(circle, rgba(255,255,255,0.04) 0%, rgba(0,0,0,0.3) 100%);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.modal-beer-img {
+  height: 90%;
+  max-width: 100%;
+  object-fit: contain;
+  transition: transform var(--transition-slow), filter var(--transition-slow);
+  filter: drop-shadow(0 6px 15px rgba(0,0,0,0.6));
+}
+
+.modal-beer-img-wrapper:hover .modal-beer-img {
+  transform: scale(1.08) rotate(2deg);
+}
+
+.modal-beer-badge {
+  position: absolute;
+  top: 12px;
+  left: 12px;
+  background: var(--accent, var(--amarillo));
+  color: var(--negro);
+  font-family: 'Bebas Neue', sans-serif;
+  letter-spacing: 1.5px;
+  font-size: 0.9rem;
+  padding: 0.35rem 0.8rem;
+  border-radius: 8px;
+  font-weight: 900;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.4);
+}
+
+.modal-beer-nombre {
+  font-family: 'Anton', sans-serif;
+  font-size: 2.2rem;
+  line-height: 1.1;
+  color: #fff;
+  margin-bottom: 0.4rem;
+}
+
+.modal-beer-desc {
+  font-size: 0.88rem;
+  opacity: 0.8;
+  line-height: 1.45;
+  color: #dfdfdf;
+  margin-bottom: 1.2rem;
+}
+
+/* Beer specs grid */
+.beer-specs {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0.6rem;
+  margin-bottom: 1.5rem;
+}
+
+.spec-box {
+  background: rgba(0, 0, 0, 0.4);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  border-radius: 12px;
+  padding: 0.6rem 0.4rem;
+  text-align: center;
+}
+
+.spec-lbl {
+  font-size: 0.65rem;
+  opacity: 0.5;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  display: block;
+}
+
+.spec-val {
+  font-family: 'Bebas Neue', sans-serif;
+  letter-spacing: 1px;
+  font-size: 1.15rem;
+  color: var(--amarillo);
+  display: block;
+  margin-top: 0.15rem;
+}
+
+/* Informative Prices panel */
+.modal-info-precios {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  background: rgba(0, 0, 0, 0.45);
+  border-radius: 18px;
+  padding: 0.9rem 1.2rem;
+  border: 1px solid rgba(255, 255, 255, 0.04);
+}
+
+.info-precio-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.3rem 0;
+}
+
+.info-precio-row.highlight {
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  padding-top: 0.6rem;
+}
+
+.precio-label {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 0.95rem;
+  letter-spacing: 1.5px;
+  color: rgba(255, 255, 255, 0.65);
+}
+
+.precio-val {
+  font-family: 'Archivo', sans-serif;
+  font-weight: 900;
+  font-size: 1.35rem;
+  color: var(--amarillo);
+  text-shadow: 0 0 10px rgba(255, 205, 0, 0.25);
+}
+
+.info-precio-row.highlight .precio-val {
+  color: #fff;
+  font-size: 1.45rem;
+  text-shadow: 0 0 12px rgba(255, 255, 255, 0.15);
+}
+
+/* ===================== FOOTER ===================== */
+footer {
+  text-align: center;
+  margin-top: auto;
+  padding: 2rem 0;
+  font-family: 'Bebas Neue', sans-serif;
+  letter-spacing: 3px;
+  color: #fff;
+  opacity: 0.65;
+  font-size: 1rem;
+}
+
+footer .salud {
+  font-size: 1.8rem;
+  margin-top: 0.4rem;
+}

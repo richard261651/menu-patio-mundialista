@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <meta name="theme-color" content="#080808">
+  <title>Patio Mundialista 🇨🇴⚽</title>
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Anton&family=Archivo:wght@400;600;800;900&family=Bebas+Neue&display=swap" rel="stylesheet">
+  
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+  <!-- ===== INTRO / VIDEO DE BIENVENIDA ===== -->
+  <div id="intro">
+    <!-- El video se carga dinámicamente desde Cloudinary en app.js -->
+    <video id="introVideo" autoplay muted playsinline></video>
+    <button class="skip" onclick="entrar()">SALTAR ▸</button>
+  </div>
+
+  <!-- ===== APP PRINCIPAL ===== -->
+  <div id="app">
+    <div class="tira">
+      <div class="a"></div>
+      <div class="b"></div>
+      <div class="r"></div>
+    </div>
+    
+    <div class="stadium-light"></div>
+
+    <header>
+      <div class="header-balon">⚽</div>
+      <h1><span class="c1">PATIO</span><br><span class="c2">MUNDIALISTA</span></h1>
+      <div class="tagline">🇨🇴 CARTAGENA · MENU OFICIAL 🏆</div>
+    </header>
+
+    <main class="main-content">
+      
+      <!-- SECCIÓN: MENÚ INFORMATIVO -->
+      <section id="menu" class="view-section active">
+        <div class="menu-titulo">🍺 NUESTRAS CERVEZAS 🍺</div>
+        <p class="menu-info-text">Selecciona una cerveza para ver sus precios y especificaciones.</p>
+        <div id="beerMenuCards">
+          <!-- Tarjetas dinámicas generadas por app.js -->
+        </div>
+      </section>
+
+    </main>
+
+    <footer>
+      ¡DISFRUTA DE LA PASIÓN!
+      <div class="salud">🍺 ⚽ 🇨🇴</div>
+    </footer>
+  </div>
+
+  <!-- ===== MODAL DETALLES DE CERVEZA ===== -->
+  <div id="beerModal" class="modal-backdrop">
+    <div class="modal-content">
+      <button class="modal-close" aria-label="Cerrar modal">&times;</button>
+      
+      <!-- Contenedor de la Imagen Sin Fondo del Producto -->
+      <div class="modal-beer-img-wrapper">
+        <span class="modal-beer-badge">COLOMBIA</span>
+        <img class="modal-beer-img" src="" alt="Cerveza Fría">
+      </div>
+      
+      <!-- Título y Descripción -->
+      <div class="modal-beer-nombre">Cerveza</div>
+      <div class="modal-beer-desc">Descripción de la cerveza.</div>
+      
+      
+      
+      <!-- Especificaciones -->
+      <div class="beer-specs">
+        <div class="spec-box">
+          <span class="spec-lbl">Alcohol</span>
+          <span class="spec-val spec-abv">4.5%</span>
+        </div>
+        <div class="spec-box">
+          <span class="spec-lbl">Temperatura</span>
+          <span class="spec-val spec-temp">4°C</span>
+        </div>
+        <div class="spec-box">
+          <span class="spec-lbl">Origen</span>
+          <span class="spec-val spec-origin">Nacional</span>
+        </div>
+      </div>
+      
+      <!-- Precios Informativos -->
+      <div class="modal-info-precios">
+        <div class="info-precio-row">
+          <span class="precio-label">UNIDAD HELADA</span>
+          <span class="precio-val spec-price-unit">$0</span>
+        </div>
+        <div class="info-precio-row highlight">
+          <span class="precio-label">CUBETAZO (10 UND)</span>
+          <span class="precio-val spec-price-bucket">$0</span>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
