@@ -2,11 +2,6 @@
    PATIO MUNDIALISTA - APP ENGINE
    ========================================== */
 
-// --- CONFIGURACIÓN DE MEDIOS (CLOUDINARY) ---
-// Enlace del video de bienvenida de Cloudinary.
-// Nota: Hemos transformado el enlace de inserción de Cloudinary en una URL directa de video MP4
-// para que se reproduzca de forma nativa y fluida en pantalla completa.
-const INTRO_VIDEO_URL = "https://res.cloudinary.com/dre8hlhdo/video/upload/Generate_a_second_seamless_l_hpfjth.mp4";
 
 // --- BEER DATA DATABASE ---
 // NOTA PARA PERSONALIZACIÓN:
@@ -82,35 +77,22 @@ document.addEventListener('DOMContentLoaded', () => {
 function setupIntro() {
   const intro = document.getElementById('intro');
   const app = document.getElementById('app');
-  const video = document.getElementById('introVideo');
   let entrado = false;
 
-  if (video) {
-    // Asignar el video de Cloudinary
-    video.src = INTRO_VIDEO_URL;
-    video.load();
+  // Fase 2: Collapsing bands to form Colombian tricolor border line
+  setTimeout(() => { 
+    if (intro) intro.classList.add('fase2'); 
+  }, 1300);
 
-    // Intentar reproducir automáticamente
-    video.play().catch(err => {
-      console.warn("El navegador bloqueó el autoplay o hubo un error al cargar el video:", err);
-    });
-
-    // Al finalizar el video, entra automáticamente a la aplicación
-    video.addEventListener('ended', () => {
-      if (!entrado) entrar();
-    });
-  }
+  // Auto transition to app
+  setTimeout(() => { 
+    if (!entrado) entrar(); 
+  }, 4400);
 
   window.entrar = function() {
     if (entrado) return;
     entrado = true;
     
-    // Detener la reproducción del video
-    if (video) {
-      video.pause();
-    }
-    
-    // Transición de desvanecimiento
     if (intro) intro.classList.add('hide');
     if (app) app.classList.add('show');
     
