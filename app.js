@@ -14,63 +14,70 @@ const BEERS = {
     name: 'Club Colombia',
     emoji: '🍺',
     color: '#C8102E', // Rojo accent
-    priceUnit: 5500,
-    priceBucket: 50000,
+    priceUnit: 5000,
+    priceBucket: 48000,
     bucketSize: 10,
     desc: 'La cerveza premium de Colombia por excelencia. De sabor malteado pronunciado y cuerpo dorado profundo, ideal para celebrar cada momento.',
     abv: '4.7%',
     temp: '3-5 °C',
     origin: 'Colombia 🇨🇴',
-    image: 'assets/club_colombia.png'
+    image: 'https://res.cloudinary.com/dre8hlhdo/image/upload/v1780865656/dorada1_xlzjyt.png'
   },
   coronita: {
     id: 'coronita',
     name: 'Coronita',
     emoji: '🍺',
     color: '#0066B3', // Azul accent
-    priceUnit: 4600,
-    priceBucket: 45000,
+    priceUnit: 4000,
+    priceBucket: 38000,
     bucketSize: 10,
     desc: 'Frescura internacional en tamaño ideal. Sabor suave, refrescante y perfecta para balancear el calor tropical de Cartagena.',
     abv: '4.5%',
     temp: '2-4 °C',
     origin: 'México 🇲🇽',
-    image: 'assets/coronita.png'
+    image: 'https://res.cloudinary.com/dre8hlhdo/image/upload/v1780865656/cerveza-coronita-botella-207ml_ccexpress-2_yjhdqc.png'
   },
   aguila: {
     id: 'aguila',
     name: 'Águila',
     emoji: '🍺',
     color: '#FFCD00', // Amarillo accent
-    priceUnit: 3500,
-    priceBucket: 32000,
+    priceUnit: 3800,
+    priceBucket: 36000,
     bucketSize: 10,
     desc: 'El sabor oficial de la alegría nacional. Ligera, refrescante y la compañera infaltable para compartir con amigos.',
     abv: '4.0%',
     temp: '2-4 °C',
     origin: 'Colombia 🇨🇴',
-    image: 'assets/aguila.png'
+    image: 'https://res.cloudinary.com/dre8hlhdo/image/upload/v1780865656/903487474516_cjfxaaambopq_768277666004_rqlghgvuvlxy_2496988_1_at4sgc.png'
   },
   costenita: {
     id: 'costenita',
     name: 'Costeñita',
     emoji: '🍺',
     color: '#E2362B', // Rojo Costeñita
-    priceUnit: 3500,
-    priceBucket: 32000,
+    priceUnit: 3200,
+    priceBucket: 30000,
     bucketSize: 10,
     desc: 'La consentida del Caribe. Cerveza rubia tradicional, de cuerpo liviano y amargor moderado, altamente refrescante.',
     abv: '4.0%',
     temp: '1-3 °C',
     origin: 'Colombia 🇨🇴',
-    image: 'assets/costenita.png'
+    image: 'https://res.cloudinary.com/dre8hlhdo/image/upload/v1780865656/Botella-costenita-cerveza-colombiana_pzxa9q.png'
   }
 };
+
+// --- BEBIDAS DATA ---
+const BEBIDAS = [
+  { name: 'Agua de Oro', emoji: '💧', price: 1500, color: '#4FC3F7', desc: 'Agua refrescante para mantenerte hidratado.' },
+  { name: 'Coca Cola', emoji: '🥤', price: 3500, color: '#E53935', desc: 'La bebida clásica que nunca falla.' }
+];
 
 // --- INITIALIZATION ---
 document.addEventListener('DOMContentLoaded', () => {
   setupIntro();
   setupBeerMenu();
+  setupBebidasMenu();
 });
 
 // --- INTRO SEQUENCE CONTROLLER ---
@@ -182,6 +189,30 @@ function openBeerModal(beer) {
 function closeBeerModal() {
   const backdrop = document.getElementById('beerModal');
   if (backdrop) backdrop.classList.remove('active');
+}
+
+// --- BEBIDAS MENU POPULATION ---
+function setupBebidasMenu() {
+  const container = document.getElementById('bebidasCards');
+  if (!container) return;
+  container.innerHTML = '';
+
+  BEBIDAS.forEach(bebida => {
+    const card = document.createElement('div');
+    card.className = 'bebida-card';
+    card.style.setProperty('--accent', bebida.color);
+
+    card.innerHTML = `
+      <div class="bebida-emoji">${bebida.emoji}</div>
+      <div class="bebida-info">
+        <div class="bebida-nombre">${bebida.name}</div>
+        <div class="bebida-desc">${bebida.desc}</div>
+      </div>
+      <div class="bebida-precio">$${formatPrice(bebida.price)}</div>
+    `;
+
+    container.appendChild(card);
+  });
 }
 
 // --- HELPER FUNCTIONS ---
