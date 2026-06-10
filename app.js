@@ -12,7 +12,7 @@ const BEERS = {
   club_colombia: {
     id: 'club_colombia',
     name: 'Club Colombia',
-    emoji: '🍺',
+    emoji: '<img src="https://res.cloudinary.com/dre8hlhdo/image/upload/v1781108525/pngtree-clinking-beer-glasses-with-confetti-design-png-image_16946468_iccqjz.webp" alt="Cerveza" class="card-cerveza-img">',
     color: '#C8102E', // Rojo accent
     priceUnit: 5000,
     priceBucket: 48000,
@@ -21,12 +21,13 @@ const BEERS = {
     abv: '4.7%',
     temp: '3-5 °C',
     origin: 'Colombia 🇨🇴',
-    image: 'https://res.cloudinary.com/dre8hlhdo/image/upload/v1780865656/dorada1_xlzjyt.png'
+    image: 'https://res.cloudinary.com/dre8hlhdo/image/upload/v1780865656/dorada1_xlzjyt.png',
+    imgScale: 1.0
   },
   coronita: {
     id: 'coronita',
     name: 'Coronita',
-    emoji: '🍺',
+    emoji: '<img src="https://res.cloudinary.com/dre8hlhdo/image/upload/v1781108525/pngtree-clinking-beer-glasses-with-confetti-design-png-image_16946468_iccqjz.webp" alt="Cerveza" class="card-cerveza-img">',
     color: '#0066B3', // Azul accent
     priceUnit: 4000,
     priceBucket: 38000,
@@ -35,12 +36,13 @@ const BEERS = {
     abv: '4.5%',
     temp: '2-4 °C',
     origin: 'México 🇲🇽',
-    image: 'https://res.cloudinary.com/dre8hlhdo/image/upload/v1780865656/cerveza-coronita-botella-207ml_ccexpress-2_yjhdqc.png'
+    image: 'https://res.cloudinary.com/dre8hlhdo/image/upload/v1780865656/cerveza-coronita-botella-207ml_ccexpress-2_yjhdqc.png',
+    imgScale: 1.35
   },
   aguila: {
     id: 'aguila',
     name: 'Águila',
-    emoji: '🍺',
+    emoji: '<img src="https://res.cloudinary.com/dre8hlhdo/image/upload/v1781108525/pngtree-clinking-beer-glasses-with-confetti-design-png-image_16946468_iccqjz.webp" alt="Cerveza" class="card-cerveza-img">',
     color: '#FFCD00', // Amarillo accent
     priceUnit: 3800,
     priceBucket: 36000,
@@ -49,12 +51,13 @@ const BEERS = {
     abv: '4.0%',
     temp: '2-4 °C',
     origin: 'Colombia 🇨🇴',
-    image: 'https://res.cloudinary.com/dre8hlhdo/image/upload/v1780865656/903487474516_cjfxaaambopq_768277666004_rqlghgvuvlxy_2496988_1_at4sgc.png'
+    image: 'https://res.cloudinary.com/dre8hlhdo/image/upload/v1780865656/903487474516_cjfxaaambopq_768277666004_rqlghgvuvlxy_2496988_1_at4sgc.png',
+    imgScale: 1.05
   },
   costenita: {
     id: 'costenita',
     name: 'Costeñita',
-    emoji: '🍺',
+    emoji: '<img src="https://res.cloudinary.com/dre8hlhdo/image/upload/v1781108525/pngtree-clinking-beer-glasses-with-confetti-design-png-image_16946468_iccqjz.webp" alt="Cerveza" class="card-cerveza-img">',
     color: '#E2362B', // Rojo Costeñita
     priceUnit: 3200,
     priceBucket: 30000,
@@ -63,7 +66,8 @@ const BEERS = {
     abv: '4.0%',
     temp: '1-3 °C',
     origin: 'Colombia 🇨🇴',
-    image: 'https://res.cloudinary.com/dre8hlhdo/image/upload/v1780865656/Botella-costenita-cerveza-colombiana_pzxa9q.png'
+    image: 'https://res.cloudinary.com/dre8hlhdo/image/upload/v1780865656/Botella-costenita-cerveza-colombiana_pzxa9q.png',
+    imgScale: 1.0
   }
 };
 
@@ -119,6 +123,7 @@ function setupBeerMenu() {
     const card = document.createElement('div');
     card.className = 'card';
     card.style.setProperty('--accent', beer.color);
+    card.style.setProperty('--img-scale', beer.imgScale || 1);
     
     card.innerHTML = `
       <div class="card-image-float-wrapper">
@@ -126,7 +131,7 @@ function setupBeerMenu() {
       </div>
       <div class="card-content-side">
         <div class="card-header-row">
-          <div class="nombre"><span class="emoji">${beer.emoji}</span> ${beer.name}</div>
+          <div class="nombre">${beer.name}</div>
           <div class="info-tag">${beer.origin}</div>
         </div>
         <div class="card-description">${beer.desc}</div>
@@ -160,6 +165,7 @@ function openBeerModal(beer) {
   
   // Actualizar detalles
   backdrop.style.setProperty('--accent', beer.color);
+  backdrop.style.setProperty('--img-scale', beer.imgScale || 1);
   backdrop.querySelector('.modal-beer-nombre').textContent = beer.name;
   backdrop.querySelector('.modal-beer-badge').textContent = beer.origin;
   backdrop.querySelector('.modal-beer-desc').textContent = beer.desc;
