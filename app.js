@@ -12,7 +12,7 @@ const BEERS = {
   club_colombia: {
     id: 'club_colombia',
     name: 'Club Colombia',
-    emoji: '🍺',
+    emoji: '',
     color: '#C8102E', // Rojo accent
     priceUnit: 5000,
     priceBucket: 48000,
@@ -26,7 +26,7 @@ const BEERS = {
   coronita: {
     id: 'coronita',
     name: 'Coronita',
-    emoji: '🍺',
+    emoji: '',
     color: '#0066B3', // Azul accent
     priceUnit: 4000,
     priceBucket: 38000,
@@ -40,7 +40,7 @@ const BEERS = {
   aguila: {
     id: 'aguila',
     name: 'Águila',
-    emoji: '🍺',
+    emoji: '',
     color: '#FFCD00', // Amarillo accent
     priceUnit: 3800,
     priceBucket: 36000,
@@ -54,7 +54,7 @@ const BEERS = {
   costenita: {
     id: 'costenita',
     name: 'Costeñita',
-    emoji: '🍺',
+    emoji: '',
     color: '#E2362B', // Rojo Costeñita
     priceUnit: 3200,
     priceBucket: 30000,
@@ -126,7 +126,7 @@ function setupBeerMenu() {
       </div>
       <div class="card-content-side">
         <div class="card-header-row">
-          <div class="nombre"><span class="emoji">${beer.emoji}</span> ${beer.name}</div>
+          <div class="nombre">${beer.name}</div>
           <div class="info-tag">${beer.origin}</div>
         </div>
         <div class="card-description">${beer.desc}</div>
