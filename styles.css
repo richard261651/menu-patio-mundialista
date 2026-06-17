@@ -664,6 +664,132 @@ h1 .c2 { color: #fff; text-shadow: 0 2px 4px rgba(0,0,0,0.5); }
   text-shadow: 0 0 8px rgba(255, 205, 0, 0.2);
 }
 
+/* ===================== PICADAS CARDS ===================== */
+.picada-card {
+  background: linear-gradient(135deg, rgba(255,255,255,0.06), rgba(255,255,255,0.01));
+  border: 1px solid var(--glass-border);
+  border-radius: 20px;
+  padding: 0;
+  margin-bottom: 1.2rem;
+  display: flex;
+  align-items: stretch;
+  position: relative;
+  overflow: hidden;
+  box-shadow: var(--shadow-main);
+  transition: transform var(--transition-fast), border-color var(--transition-fast), box-shadow var(--transition-fast);
+}
+
+.picada-card::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 4px;
+  background: var(--accent, var(--amarillo));
+  z-index: 2;
+}
+
+.picada-card:hover {
+  transform: translateY(-3px) scale(1.01);
+  border-color: rgba(255, 205, 0, 0.35);
+  box-shadow: var(--neon-glow), var(--shadow-main);
+}
+
+/* Image wrapper for picada cards */
+.picada-img-wrapper {
+  width: 110px;
+  min-height: 100px;
+  flex-shrink: 0;
+  position: relative;
+  overflow: hidden;
+  background: radial-gradient(circle at center, rgba(255,255,255,0.05) 0%, rgba(0,0,0,0.2) 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.picada-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform var(--transition-slow);
+  filter: brightness(0.95);
+}
+
+.picada-card:hover .picada-img {
+  transform: scale(1.08);
+}
+
+/* Emoji fallback when no image */
+.picada-emoji-wrapper {
+  width: 80px;
+  min-height: 90px;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: radial-gradient(circle, rgba(255,255,255,0.04) 0%, transparent 70%);
+}
+
+.picada-emoji {
+  font-size: 2.5rem;
+  filter: drop-shadow(0 2px 6px rgba(0,0,0,0.4));
+}
+
+.picada-info {
+  flex: 1;
+  min-width: 0;
+  padding: 1rem 0.5rem 1rem 1rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 0.25rem;
+}
+
+.picada-nombre {
+  font-family: 'Anton', sans-serif;
+  font-size: 1.15rem;
+  letter-spacing: 0.5px;
+  color: #fff;
+}
+
+.picada-desc {
+  font-size: 0.78rem;
+  opacity: 0.6;
+  line-height: 1.35;
+  color: #d4d4d4;
+}
+
+.picada-precio {
+  font-family: 'Archivo', sans-serif;
+  font-weight: 800;
+  font-size: 1.2rem;
+  color: var(--amarillo);
+  white-space: nowrap;
+  flex-shrink: 0;
+  align-self: center;
+  padding: 0 1rem;
+  text-shadow: 0 0 8px rgba(255, 205, 0, 0.2);
+}
+
+/* Responsive adjustment for picadas on small devices */
+@media (max-width: 400px) {
+  .picada-img-wrapper {
+    width: 85px;
+  }
+  .picada-emoji-wrapper {
+    width: 60px;
+  }
+  .picada-nombre {
+    font-size: 1.05rem;
+  }
+  .picada-precio {
+    font-size: 1.05rem;
+    padding: 0 0.6rem;
+  }
+}
+
 /* ===================== BEER DETAILS MODAL ===================== */
 .modal-backdrop {
   position: fixed;

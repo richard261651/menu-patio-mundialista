@@ -73,11 +73,37 @@ const BEBIDAS = [
   { name: 'Coca Cola', emoji: '🥤', price: 3500, color: '#E53935', desc: 'La bebida clásica que nunca falla.' }
 ];
 
+// --- PICADAS DATA ---
+const PICADAS = [
+  {
+    name: 'Chicharrón con Bollo',
+    price: 16000,
+    color: '#D4A056',
+    desc: 'Crujiente chicharrón de cerdo acompañado de bollo. El clásico que no falla.',
+    image: 'https://res.cloudinary.com/dre8hlhdo/image/upload/v1781711236/picada_de_chicharron_ou6jmm.png'
+  },
+  {
+    name: 'Chorizo',
+    price: 14000,
+    color: '#C8102E',
+    desc: 'Chorizo a la parrilla con su toque de limón y bollo. Sabor ahumado en cada bocado.',
+    image: 'https://res.cloudinary.com/dre8hlhdo/image/upload/v1781711228/picada_de_chorizo_xjc1ke.png'
+  },
+  {
+    name: 'Patacón (6 unidades)',
+    price: 12000,
+    color: '#FFCD00',
+    desc: 'Seis patacones dorados y crocantes con ahogado y suero. Perfectos para compartir mientras rueda el balón.',
+    image: 'https://res.cloudinary.com/dre8hlhdo/image/upload/v1781711245/picada_de_patacon_tx8jqu.png'
+  }
+];
+
 // --- INITIALIZATION ---
 document.addEventListener('DOMContentLoaded', () => {
   setupIntro();
   setupBeerMenu();
   setupBebidasMenu();
+  setupPicadasMenu();
 });
 
 // --- INTRO SEQUENCE CONTROLLER ---
@@ -209,6 +235,40 @@ function setupBebidasMenu() {
         <div class="bebida-desc">${bebida.desc}</div>
       </div>
       <div class="bebida-precio">$${formatPrice(bebida.price)}</div>
+    `;
+
+    container.appendChild(card);
+  });
+}
+
+// --- PICADAS MENU POPULATION ---
+function setupPicadasMenu() {
+  const container = document.getElementById('picadasCards');
+  if (!container) return;
+  container.innerHTML = '';
+
+  PICADAS.forEach(picada => {
+    const card = document.createElement('div');
+    card.className = 'picada-card';
+    card.style.setProperty('--accent', picada.color);
+
+    const hasImage = picada.image && picada.image.trim() !== '';
+
+    card.innerHTML = `
+      ${hasImage ? `
+        <div class="picada-img-wrapper">
+          <img class="picada-img" src="${picada.image}" alt="${picada.name}">
+        </div>
+      ` : `
+        <div class="picada-emoji-wrapper">
+          <span class="picada-emoji">🍖</span>
+        </div>
+      `}
+      <div class="picada-info">
+        <div class="picada-nombre">${picada.name}</div>
+        <div class="picada-desc">${picada.desc}</div>
+      </div>
+      <div class="picada-precio">$${formatPrice(picada.price)}</div>
     `;
 
     container.appendChild(card);
