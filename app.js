@@ -80,21 +80,21 @@ const PICADAS = [
     price: 16000,
     color: '#D4A056',
     desc: 'Crujiente chicharrón de cerdo acompañado de bollo. El clásico que no falla.',
-    image: 'https://res.cloudinary.com/dre8hlhdo/image/upload/v1781711236/picada_de_chicharron_ou6jmm.png'
+    image: 'https://res.cloudinary.com/dre8hlhdo/image/upload/f_auto,q_auto,w_600/v1781711236/picada_de_chicharron_ou6jmm.png'
   },
   {
     name: 'Chorizo',
     price: 14000,
     color: '#C8102E',
     desc: 'Chorizo a la parrilla con su toque de limón y bollo. Sabor ahumado en cada bocado.',
-    image: 'https://res.cloudinary.com/dre8hlhdo/image/upload/v1781711228/picada_de_chorizo_xjc1ke.png'
+    image: 'https://res.cloudinary.com/dre8hlhdo/image/upload/f_auto,q_auto,w_600/v1781711228/picada_de_chorizo_xjc1ke.png'
   },
   {
     name: 'Patacón (6 unidades)',
     price: 12000,
     color: '#FFCD00',
     desc: 'Seis patacones dorados y crocantes con ahogado y suero. Perfectos para compartir mientras rueda el balón.',
-    image: 'https://res.cloudinary.com/dre8hlhdo/image/upload/v1781711245/picada_de_patacon_tx8jqu.png'
+    image: 'https://res.cloudinary.com/dre8hlhdo/image/upload/f_auto,q_auto,w_600/v1781711245/picada_de_patacon_tx8jqu.png'
   }
 ];
 
