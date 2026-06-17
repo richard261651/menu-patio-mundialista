@@ -69,8 +69,8 @@ const BEERS = {
 
 // --- BEBIDAS DATA ---
 const BEBIDAS = [
-  { name: 'Agua de Oro', emoji: '💧', price: 1500, color: '#4FC3F7', desc: 'Agua refrescante para mantenerte hidratado.' },
-  { name: 'Coca Cola', emoji: '🥤', price: 3500, color: '#E53935', desc: 'La bebida clásica que nunca falla.' }
+  { name: 'Agua de Oro', emoji: '💧', price: 1500, color: '#4FC3F7', desc: 'Agua refrescante para mantenerte hidratado.', image: '' },
+  { name: 'Coca Cola', emoji: '🥤', price: 3500, color: '#E53935', desc: 'La bebida clásica que nunca falla.', image: 'https://res.cloudinary.com/dre8hlhdo/image/upload/f_auto,q_auto,w_200/v1781712402/coca-cola-plastic-bottle-isolated-on-transparent-background-free-png_n2t8xn.webp' }
 ];
 
 // --- PICADAS DATA ---
@@ -228,8 +228,16 @@ function setupBebidasMenu() {
     card.className = 'bebida-card';
     card.style.setProperty('--accent', bebida.color);
 
+    const hasImage = bebida.image && bebida.image.trim() !== '';
+
     card.innerHTML = `
-      <div class="bebida-emoji">${bebida.emoji}</div>
+      ${hasImage ? `
+        <div class="bebida-img-wrapper">
+          <img class="bebida-img" src="${bebida.image}" alt="${bebida.name}">
+        </div>
+      ` : `
+        <div class="bebida-emoji">${bebida.emoji}</div>
+      `}
       <div class="bebida-info">
         <div class="bebida-nombre">${bebida.name}</div>
         <div class="bebida-desc">${bebida.desc}</div>
