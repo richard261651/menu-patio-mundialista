@@ -271,8 +271,42 @@ function setupPicadasMenu() {
       <div class="picada-precio">$${formatPrice(picada.price)}</div>
     `;
 
+    // Abrir modal al hacer clic en la tarjeta
+    card.addEventListener('click', () => {
+      openPicadaModal(picada);
+    });
+
     container.appendChild(card);
   });
+}
+
+// --- PICADA DETAILS MODAL ---
+function openPicadaModal(picada) {
+  const backdrop = document.getElementById('picadaModal');
+  if (!backdrop) return;
+
+  // Actualizar detalles
+  backdrop.style.setProperty('--accent', picada.color);
+  backdrop.querySelector('.modal-picada-nombre').textContent = picada.name;
+  backdrop.querySelector('.modal-picada-desc').textContent = picada.desc;
+  backdrop.querySelector('.modal-picada-precio-val').textContent = `$${formatPrice(picada.price)}`;
+
+  // Establecer la imagen del plato
+  backdrop.querySelector('.modal-picada-img').src = picada.image;
+
+  // Mostrar Modal
+  backdrop.classList.add('active');
+
+  // Vincular eventos de cierre
+  backdrop.querySelector('.modal-close').onclick = closePicadaModal;
+  backdrop.onclick = (e) => {
+    if (e.target === backdrop) closePicadaModal();
+  };
+}
+
+function closePicadaModal() {
+  const backdrop = document.getElementById('picadaModal');
+  if (backdrop) backdrop.classList.remove('active');
 }
 
 // --- HELPER FUNCTIONS ---

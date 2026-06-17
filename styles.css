@@ -1010,6 +1010,93 @@ h1 .c2 { color: #fff; text-shadow: 0 2px 4px rgba(0,0,0,0.5); }
   text-shadow: 0 0 12px rgba(255, 255, 255, 0.15);
 }
 
+/* ===================== PICADA DETAILS MODAL ===================== */
+.modal-picada-img-wrapper {
+  width: 100%;
+  height: 220px;
+  border-radius: 20px;
+  margin-bottom: 1.2rem;
+  overflow: hidden;
+  position: relative;
+  background: radial-gradient(circle, rgba(255,255,255,0.04) 0%, rgba(0,0,0,0.3) 100%);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.modal-picada-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform var(--transition-slow), filter var(--transition-slow);
+  filter: brightness(0.95);
+}
+
+.modal-picada-img-wrapper:hover .modal-picada-img {
+  transform: scale(1.05);
+}
+
+.modal-picada-badge {
+  position: absolute;
+  top: 12px;
+  left: 12px;
+  background: var(--accent, var(--rojo));
+  color: #fff;
+  font-family: 'Bebas Neue', sans-serif;
+  letter-spacing: 1.5px;
+  font-size: 0.9rem;
+  padding: 0.35rem 0.8rem;
+  border-radius: 8px;
+  font-weight: 900;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.4);
+  z-index: 2;
+}
+
+.modal-picada-nombre {
+  font-family: 'Anton', sans-serif;
+  font-size: 2.2rem;
+  line-height: 1.1;
+  color: #fff;
+  margin-bottom: 0.4rem;
+}
+
+.modal-picada-desc {
+  font-size: 0.92rem;
+  opacity: 0.8;
+  line-height: 1.5;
+  color: #dfdfdf;
+  margin-bottom: 1.4rem;
+}
+
+.modal-picada-precio-wrapper {
+  background: rgba(0, 0, 0, 0.45);
+  border-radius: 18px;
+  padding: 1rem 1.4rem;
+  border: 1px solid rgba(255, 255, 255, 0.04);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.modal-picada-precio-label {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 1.1rem;
+  letter-spacing: 2px;
+  color: rgba(255, 255, 255, 0.65);
+}
+
+.modal-picada-precio-val {
+  font-family: 'Archivo', sans-serif;
+  font-weight: 900;
+  font-size: 1.8rem;
+  color: var(--amarillo);
+  text-shadow: 0 0 12px rgba(255, 205, 0, 0.3);
+}
+
+.picada-card {
+  cursor: pointer;
+}
 /* ===================== FOOTER ===================== */
 footer {
   text-align: center;
