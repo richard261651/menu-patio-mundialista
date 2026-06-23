@@ -1145,3 +1145,158 @@ footer .salud {
   animation: girar 4s linear infinite;
   filter: drop-shadow(0 2px 4px rgba(0,0,0,0.4));
 }
+
+/* ===================== INTRO MATCH BANNER ===================== */
+.intro-match {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.6rem;
+  margin-top: 1rem;
+  padding: 0.6rem 1.2rem;
+  background: rgba(255, 255, 255, 0.07);
+  border: 1px solid rgba(255, 205, 0, 0.25);
+  border-radius: 16px;
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  animation: pulse-border 2.5s ease-in-out infinite alternate;
+}
+
+@keyframes pulse-border {
+  0% { border-color: rgba(255, 205, 0, 0.2); box-shadow: 0 0 10px rgba(255, 205, 0, 0.1); }
+  100% { border-color: rgba(255, 205, 0, 0.5); box-shadow: 0 0 20px rgba(255, 205, 0, 0.25); }
+}
+
+.match-flag {
+  font-size: clamp(1.5rem, 5vw, 2rem);
+  animation: flag-wave 1.5s ease-in-out infinite alternate;
+}
+
+.match-flag:last-child {
+  animation-delay: -0.75s;
+}
+
+@keyframes flag-wave {
+  0% { transform: rotate(-5deg) scale(1); }
+  100% { transform: rotate(5deg) scale(1.1); }
+}
+
+.match-team {
+  font-family: 'Anton', sans-serif;
+  font-size: clamp(1rem, 4vw, 1.4rem);
+  color: #fff;
+  letter-spacing: 1px;
+  text-shadow: 0 2px 4px rgba(0,0,0,0.5);
+}
+
+.match-vs {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: clamp(0.9rem, 3vw, 1.1rem);
+  color: var(--amarillo);
+  letter-spacing: 2px;
+  text-shadow: 0 0 10px rgba(255, 205, 0, 0.5);
+  animation: vs-pulse 1s ease-in-out infinite alternate;
+}
+
+@keyframes vs-pulse {
+  0% { opacity: 0.7; transform: scale(1); }
+  100% { opacity: 1; transform: scale(1.15); }
+}
+
+.intro-match-date {
+  font-family: 'Bebas Neue', sans-serif;
+  color: var(--amarillo);
+  letter-spacing: clamp(2px, 1vw, 4px);
+  font-size: clamp(0.85rem, 3vw, 1rem);
+  margin-top: 0.5rem;
+  opacity: 0.75;
+  text-shadow: 0 0 8px rgba(255, 205, 0, 0.3);
+}
+
+/* ===================== BEBIDA DETAILS MODAL ===================== */
+.modal-bebida-img-wrapper {
+  width: 100%;
+  height: 200px;
+  border-radius: 20px;
+  margin-bottom: 1.2rem;
+  overflow: hidden;
+  position: relative;
+  background: radial-gradient(circle, rgba(255,255,255,0.04) 0%, rgba(0,0,0,0.3) 100%);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.modal-bebida-img {
+  height: 85%;
+  max-width: 90%;
+  object-fit: contain;
+  transition: transform var(--transition-slow), filter var(--transition-slow);
+  filter: drop-shadow(0 6px 15px rgba(0,0,0,0.6));
+}
+
+.modal-bebida-img-wrapper:hover .modal-bebida-img {
+  transform: scale(1.08);
+}
+
+.modal-bebida-badge {
+  position: absolute;
+  top: 12px;
+  left: 12px;
+  background: var(--accent, #4FC3F7);
+  color: var(--negro);
+  font-family: 'Bebas Neue', sans-serif;
+  letter-spacing: 1.5px;
+  font-size: 0.9rem;
+  padding: 0.35rem 0.8rem;
+  border-radius: 8px;
+  font-weight: 900;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.4);
+  z-index: 2;
+}
+
+.modal-bebida-nombre {
+  font-family: 'Anton', sans-serif;
+  font-size: 2.2rem;
+  line-height: 1.1;
+  color: #fff;
+  margin-bottom: 0.4rem;
+}
+
+.modal-bebida-desc {
+  font-size: 0.92rem;
+  opacity: 0.8;
+  line-height: 1.5;
+  color: #dfdfdf;
+  margin-bottom: 1.4rem;
+}
+
+.modal-bebida-precio-wrapper {
+  background: rgba(0, 0, 0, 0.45);
+  border-radius: 18px;
+  padding: 1rem 1.4rem;
+  border: 1px solid rgba(255, 255, 255, 0.04);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.modal-bebida-precio-label {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 1.1rem;
+  letter-spacing: 2px;
+  color: rgba(255, 255, 255, 0.65);
+}
+
+.modal-bebida-precio-val {
+  font-family: 'Archivo', sans-serif;
+  font-weight: 900;
+  font-size: 1.8rem;
+  color: var(--amarillo);
+  text-shadow: 0 0 12px rgba(255, 205, 0, 0.3);
+}
+
+.bebida-card {
+  cursor: pointer;
+}

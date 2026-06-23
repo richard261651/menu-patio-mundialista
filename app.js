@@ -51,6 +51,20 @@ const BEERS = {
     origin: 'Colombia 🇨🇴',
     image: 'https://res.cloudinary.com/dre8hlhdo/image/upload/v1780865656/903487474516_cjfxaaambopq_768277666004_rqlghgvuvlxy_2496988_1_at4sgc.png'
   },
+  aguila_light: {
+    id: 'aguila_light',
+    name: 'Águila Light',
+    emoji: '',
+    color: '#B8D430', // Verde Light
+    priceUnit: 3800,
+    priceBucket: 36000,
+    bucketSize: 10,
+    desc: 'Toda la frescura de Águila con menos calorías. Ligera, suave y perfecta para disfrutar sin parar.',
+    abv: '3.5%',
+    temp: '2-4 °C',
+    origin: 'Colombia 🇨🇴',
+    image: 'https://res.cloudinary.com/dre8hlhdo/image/upload/v1781733858/light-Photoroom_rgty0b.png'
+  },
   costenita: {
     id: 'costenita',
     name: 'Costeñita',
@@ -69,7 +83,7 @@ const BEERS = {
 
 // --- BEBIDAS DATA ---
 const BEBIDAS = [
-  { name: 'Agua de Oro', emoji: '💧', price: 1500, color: '#4FC3F7', desc: 'Agua refrescante para mantenerte hidratado.', image: '' },
+  { name: 'Agua de Oro', emoji: '💧', price: 1500, color: '#4FC3F7', desc: 'Agua refrescante para mantenerte hidratado.', image: 'https://res.cloudinary.com/dre8hlhdo/image/upload/v1781733866/agua-Photoroom_tndjyq.png' },
   { name: 'Coca Cola', emoji: '🥤', price: 3500, color: '#E53935', desc: 'La bebida clásica que nunca falla.', image: 'https://res.cloudinary.com/dre8hlhdo/image/upload/f_auto,q_auto,w_200/v1781712402/coca-cola-plastic-bottle-isolated-on-transparent-background-free-png_n2t8xn.webp' }
 ];
 
@@ -245,8 +259,51 @@ function setupBebidasMenu() {
       <div class="bebida-precio">$${formatPrice(bebida.price)}</div>
     `;
 
+    // Abrir modal al hacer clic en la tarjeta
+    card.style.cursor = 'pointer';
+    card.addEventListener('click', () => {
+      openBebidaModal(bebida);
+    });
+
     container.appendChild(card);
   });
+}
+
+// --- BEBIDA DETAILS MODAL ---
+function openBebidaModal(bebida) {
+  const backdrop = document.getElementById('bebidaModal');
+  if (!backdrop) return;
+
+  // Actualizar detalles
+  backdrop.style.setProperty('--accent', bebida.color);
+  backdrop.querySelector('.modal-bebida-nombre').textContent = bebida.name;
+  backdrop.querySelector('.modal-bebida-desc').textContent = bebida.desc;
+  backdrop.querySelector('.modal-bebida-precio-val').textContent = `$${formatPrice(bebida.price)}`;
+  backdrop.querySelector('.modal-bebida-badge').textContent = bebida.emoji + ' BEBIDA';
+
+  // Establecer la imagen del producto
+  const img = backdrop.querySelector('.modal-bebida-img');
+  const hasImage = bebida.image && bebida.image.trim() !== '';
+  if (hasImage) {
+    img.src = bebida.image;
+    img.style.display = 'block';
+  } else {
+    img.style.display = 'none';
+  }
+
+  // Mostrar Modal
+  backdrop.classList.add('active');
+
+  // Vincular eventos de cierre
+  backdrop.querySelector('.modal-close').onclick = closeBebidaModal;
+  backdrop.onclick = (e) => {
+    if (e.target === backdrop) closeBebidaModal();
+  };
+}
+
+function closeBebidaModal() {
+  const backdrop = document.getElementById('bebidaModal');
+  if (backdrop) backdrop.classList.remove('active');
 }
 
 // --- PICADAS MENU POPULATION ---
